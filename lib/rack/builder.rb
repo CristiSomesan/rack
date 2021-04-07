@@ -146,7 +146,7 @@ module Rack
         mapping, @map = @map, nil
         @use << proc { |app| generate_map(app, mapping) }
       end
-      @use << proc { |app| middleware.new(app, *args, &block) }
+      @use << proc { |app| binding.pry; middleware.new(app, *args, &block) }
     end
     ruby2_keywords(:use) if respond_to?(:ruby2_keywords, true)
 
