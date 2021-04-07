@@ -224,7 +224,7 @@ module Rack
       app = @map ? generate_map(@run, @map) : @run
       fail "missing run or map statement" unless app
       app.freeze if @freeze_app
-      app = @use.reverse.inject(app) { |a, e| e[a].tap { |x| x.freeze if @freeze_app } }
+      # app = @use.reverse.inject(app) { |a, e| e[a].tap { |x| x.freeze if @freeze_app } }
       @warmup.call(app) if @warmup
       app
     end
